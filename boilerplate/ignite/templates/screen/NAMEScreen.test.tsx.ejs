@@ -1,0 +1,26 @@
+
+import * as React from "react"
+import { SafeAreaProvider } from "react-native-safe-area-context"
+import { fireEvent, render, screen } from "@testing-library/react-native"
+import { SafeAreaProvider } from "react-native-safe-area-context"
+// import { RootStoreProvider, RootStore, RootStoreModel } from "../models"
+
+jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper")
+
+describe("<%= props.pascalCaseName %> screen", () => {
+    test("should be able to be created", () => {
+        // Optionally do stuff with mobx-state-tree
+        // const rootStore: RootStore = RootStoreModel.create({})
+
+        const testScreen = (
+            <SafeAreaProvider initialSafeAreaInsets={{ top: 1, left: 2, right: 3, bottom: 4 }}>
+                // <RootStoreProvider value={rootStore}>
+                <<%= props.pascalCaseName %>Screen />
+                //  </RootStoreProvider>
+            </SafeAreaProvider>
+        )
+
+        render(testScreen)
+        // const 
+    }
+})

@@ -25,7 +25,7 @@ export const <%= props.pascalCaseName %> = observer(function <%= props.pascalCas
   const $styles = [$container, style]
 
   return (
-    <View style={$styles}>
+    <View style={$styles} testID="<%= props.kebabCaseName %>-component-id">
       <Text style={$text}>Hello</Text>
     </View>
   )
