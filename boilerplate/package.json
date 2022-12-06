@@ -25,12 +25,15 @@
     "release:android": "cd android && rm -rf app/src/main/res/drawable-* && ./gradlew assembleRelease && cd - && echo 'APK generated in ./android/app/build/outputs/apk/release/app-release.apk'",
     "clean": "npx react-native-clean-project",
     "clean-all": "npx react-native clean-project-auto",
-    "expo:start": "expo start",
-    "expo:android": "expo start --android",
-    "expo:ios": "expo start --ios",
-    "expo:web": "expo start --web",
+    "expo:start": "BUILD_ENV=dev expo start",
+    "expo:start:clean": "BUILD_ENV=dev expo start -c",
+    "expo:android": "BUILD_ENV=dev expo start --android",
+    "expo:ios": "BUILD_ENV=dev expo start --ios",
+    "expo:web": "BUILD_ENV=dev expo start --web",
     "expo:build:detox": "detox build -c ios.sim.expo",
-    "expo:test:detox": "./bin/downloadExpoApp.sh && detox test --configuration ios.sim.expo"
+    "expo:test:detox": "./bin/downloadExpoApp.sh && detox test --configuration ios.sim.expo",
+    "solidarity": "npx solidarity",
+    "eas-build-pre-install": "node eas-build-pre-install.js"
   },
   "overrides": {
     "react-error-overlay": "6.0.9"
@@ -69,7 +72,8 @@
     "react-native-screens": "3.15.0",
     "reactotron-mst": "3.1.4",
     "reactotron-react-js": "^3.3.7",
-    "reactotron-react-native": "5.0.3"
+    "reactotron-react-native": "5.0.3",
+    "solidarity": "^3.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.18.0",

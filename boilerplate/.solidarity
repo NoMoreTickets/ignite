@@ -1,0 +1,128 @@
+{
+  "$schema": "http://json.schemastore.org/solidaritySchema",
+  "requirements": {
+    "Android": [
+      { "rule": "cli", "binary": "emulator" },
+      { "rule": "env", "variable": "ANDROID_SDK_ROOT", "error": "The ANDROID_SDK_ROOT environment variable must be set to your local SDK.  Refer to getting started docs for help." },
+      {
+        "rule": "shell",
+        "command": "plutil -extract CFBundleShortVersionString  raw \"/Applications/Android Studio.app/Contents/Info.plist\"",
+        "match": "2021.+",
+        "platform": "darwin"
+      }
+    ],
+    "NPM": [{ "rule": "cli", "binary": "npm", "semvar":"8.11.0" }],
+    "Yarn": [{ "rule": "cli", "binary": "yarn", "semver": "1.22.19" }],
+    "Node": [{ "rule": "cli", "binary": "node", "semver": "16.16.0" }],
+    "Git config user email": [
+      {
+        "rule": "shell",
+        "command": "git config user.email",
+        "match": ".+@.+",
+        "error": "Your git user.email variable is not set. Set it using the command: git config --global user.email \"email@example.com\"",
+        "comment": "The git user email is required to understand who makes commits"
+      }
+    ],
+    "Git config user username": [
+      {
+        "rule": "shell",
+        "command": "git config user.email",
+        "match": ".+",
+        "error": "Your git user.name variable is not set. Set it using the command: git config --global user.username \"John Smith\"",
+        "comment": "The git user username is required to understand who makes commits"
+
+      }
+    ],
+    "Package.json": [{ "rule": "file", "location": "./package.json" }],
+    "Xcode" : [
+      {
+        "rule": "cli",
+        "binary": "xcodebuild",
+        "semver": "14.0.1",
+        "comment": "Apple's Xcode IDE. Required to build MeterFeeder app for iOS platforms",
+        "platform": "darwin"
+      }
+    ],
+    "cocoapods": [
+      {
+        "rule": "cli",
+        "binary": "pod",
+        "semver": "1.11.3",
+        "comment": "Cocoapods is Mac/iOS dependency manager required for making iOS builds",
+        "platform": "darwin"
+      }
+    ],
+    "watchman": [
+      {
+        "rule": "cli",
+        "binary": "watchman",
+        "error": "install watchman using the command `brew install watchman`",
+        "comment": "Facebook's watchman watches for files that have changed. Primarily used for unit testing."
+      }
+    ],
+    "detox": [
+      {
+        "rule": "shell",
+        "command": "detox --version",
+        "match": ".*19.9.3.*",
+        "error": "run npm install -g detox-cli@VERSION_YOU_NEED",
+        "comment": "detox is an end-to-end testing library",
+        "platform": "darwin"
+      }
+    ],
+    "applesimutils": [
+      {
+        "rule": "shell",
+        "command": "applesimutils --version",
+        "match": ".+0.9.7",
+        "error": "To install run: \n\nbrew tap wix/brew\nbrew install applesimutils",
+        "comment": "A collection of utils for Apple simulators",
+        "platform":"darwin"
+      }
+    ],
+    "expo": [
+      {
+        "rule": "cli",
+        "binary": "expo",
+        "semver": ">=6.0.2",
+        "error": "run npm install -g expo-cli@VERSION_YOU_NEED",
+        "comment": "Expo is a React Native build and deployment framework/platform"
+      }
+    ],
+    "eas": [
+      {
+        "rule": "cli",
+        "binary": "eas",
+        "semver": "2.9.0",
+        "error": "run npm install -g eas-cli@VERSION_YOU_NEED",
+        "comment": "This is Expo Applicaiton Services, which is what we use to build, deploy, and ship apps using expo"
+      }
+    ],
+    "rvm": [
+      {
+        "rule": "cli",
+        "binary": "rvm",
+        "semver": "1.29.12-next",
+        "comment": "RVM (Ruby Version Manager) is like vm for Ruby. It lets you install and use multiple versions of Ruby",
+        "platform": "darwin"
+      }
+    ],
+    "ruby": [
+      {
+        "rule": "cli",
+        "binary": "ruby",
+        "semver": "3.0.0",
+        "comment": "Ruby is primarily used for Ruby-based infrastructural tools like Cocoapods amd Fastlane",
+        "platform": "darwin"
+      }
+    ],
+    "Homebrew": [
+      {
+        "rule": "cli",
+        "binary": "brew",
+        "semver": "3.6.11",
+        "platform": "darwin"
+      }
+    ]
+  }
+}
